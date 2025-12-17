@@ -96,8 +96,8 @@ public class OTMuniversity {
 	@Override
 	public String toString() {
 		return "OTMuniversity [universityid=" + universityid + ", universityname=" + universityname
-				+ ", universityrank=" + universityrank + ", universitylocation=" + universitylocation + ", otmcollege="
-				+ otmcollege + "]";
+				+ ", universityrank=" + universityrank + ", universitylocation=" + universitylocation
+				;
 	}
 
 	

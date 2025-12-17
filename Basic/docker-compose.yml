@@ -15,7 +15,7 @@ services:
       - mysql-data:/var/lib/mysql
 
   backend:
-    # 1 This build base don the laest jar generated and by using the Docker file 
+    # 1 This build based on the latest jar generated and by using the Docker file 
     # build:
     #   context: .
     #   dockerfile: Dockerfile
