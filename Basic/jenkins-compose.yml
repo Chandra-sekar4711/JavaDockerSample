@@ -3,28 +3,30 @@ services:
   jenkins:
     image: jenkins/jenkins:lts
     container_name: jenkins
-    user: root  # ⬅️ CRITICAL: Run as root for Docker access
+    user: root
+    privileged: true  # ⬅️ ADD THIS
     ports:
       - "8080:8080"
       - "50000:50000"
     volumes:
       - jenkins_home:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
-      - /usr/bin/docker:/usr/bin/docker  # ⬅️ Mount Docker binary
-      - /usr/local/bin/docker-compose:/usr/local/bin/docker-compose  # Optional
+      - /usr/bin/docker:/usr/bin/docker
+      - /usr/local/bin/docker-compose:/usr/local/bin/docker-compose
     environment:
-      # Set timezone if needed
       TZ: "Asia/Kolkata"
+      DOCKER_HOST: unix:///var/run/docker.sock
     command: >
       bash -c "
         # Install Docker CLI inside container
-        echo 'Installing Docker CLI...'
-        apt-get update && apt-get install -y docker.io curl
+        apt-get update && apt-get install -y docker.io docker-compose
+      
+        # Verify Docker installation
+        docker --version
+        docker-compose --version
       
         # Start Jenkins
-        echo 'Starting Jenkins...'
         exec /usr/local/bin/jenkins.sh
       "
-
 volumes:
   jenkins_home:
