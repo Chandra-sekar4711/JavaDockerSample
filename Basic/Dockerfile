@@ -1,5 +1,5 @@
-# Use OpenJDK 17 slim base image
-FROM openjdk:17-slim
+# Use Eclipse Temurin Java 17 (production-ready, actively maintained)
+FROM eclipse-temurin:17-jre-jammy
 
 # Set working directory inside the container
 WORKDIR /app
@@ -11,4 +11,4 @@ COPY target/*.jar app.jar
 EXPOSE 8080
 
 # Run the jar
-ENTRYPOINT ["java","-jar","app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
