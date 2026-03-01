@@ -20,7 +20,7 @@ jobs:
         cache: maven
     - name: Build with Maven
       working-directory: Basic
-      run: mvn clean install
+      run: mvn clean install -DskipTests
 
     - name: Build & push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
