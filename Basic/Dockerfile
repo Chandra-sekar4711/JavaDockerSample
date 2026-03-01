@@ -1,14 +1,14 @@
-# Use Java base image
-FROM openjdk:17-jdk-slim
+# Use OpenJDK 17 slim base image
+FROM openjdk:17-slim
 
-# Set working directory in container
+# Set working directory inside the container
 WORKDIR /app
 
-# Copy the JAR file from the target folder to the container
-COPY target/Basic-0.0.1-SNAPSHOT.jar app.jar
+# Copy Maven build output (jar) into container
+COPY target/*.jar app.jar
 
-# Expose port
+# Expose application port (adjust if your app uses another port)
 EXPOSE 8080
 
-# Run the JAR file
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Run the jar
+ENTRYPOINT ["java","-jar","app.jar"]
