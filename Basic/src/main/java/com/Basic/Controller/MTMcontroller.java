@@ -33,7 +33,7 @@ public class MTMcontroller {
             course.getMtmstudents().add(student); // Add student to course  
             courses.add(mtmcoursesRepository.save(course));  // Save course
         }
-  
+         System.out.println("Checking");
         student.setMtmcourses(courses);  // Update student with managed courses
         
         MTMstudents savedStudent = mtmstudentrepository.save(student); // Save student
